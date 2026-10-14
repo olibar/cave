@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Comment importer votre liste de vins dans l&rsquo;app Cave depuis un tableur, un export Cave ou CellarTracker.">
+<title>Cave : guide d&rsquo;importation</title>
+<style>
+:root{--bg:#fbf8f5;--fg:#1f1a17;--muted:#5c534d;--accent:#7a1f2b;--line:#e4dcd5;--card:#ffffff}
+@media (prefers-color-scheme:dark){:root{--bg:#161312;--fg:#efe9e4;--muted:#b5aba3;--accent:#e58b96;--line:#3a3330;--card:#1f1b19}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0}
+.skip:focus{left:16px;top:8px;background:var(--card);padding:8px 12px}
+header,main,footer{max-width:42rem;margin:0 auto;padding:0 16px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;padding-top:24px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+header .name{font-weight:700;font-size:1.25rem;color:var(--fg);text-decoration:none}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:16px;flex-wrap:wrap}
+nav a[aria-current=page]{font-weight:600;color:var(--fg)}
+h1{font-size:1.9rem;line-height:1.2;margin:28px 0 8px}
+h2{font-size:1.25rem;margin:28px 0 6px}
+h3{font-size:1.05rem;margin:20px 0 4px}
+p,li{max-width:40rem}
+.lead{color:var(--muted);font-size:1.1rem}
+.meta{color:var(--muted);font-size:.95rem}
+ul.features{padding-left:1.2rem}
+footer{margin-top:40px;padding-top:16px;padding-bottom:32px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:.95rem}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--card)}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9rem}
+pre{background:var(--card);border:1px solid var(--line);padding:12px;overflow-x:auto;border-radius:6px}
+ol li,ul li{margin:4px 0}
+.note{border-left:4px solid var(--accent);background:var(--card);padding:8px 14px;margin:16px 0}
+.lang{font-size:.95rem}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+<header>
+<a class="name" href="index.html">Cave</a>
+<nav aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="support.html">Support</a></li><li><a href="import-fr.html" aria-current="page">Guide d&rsquo;importation</a></li><li><a href="privacy.html">Privacy</a></li></ul></nav>
+</header>
+<main id="main">
+<p class="lang"><a href="import.html" hreflang="en" lang="en">Read this guide in English</a></p>
+<h1>Guide d&rsquo;importation</h1>
+<p class="lead">Importez votre liste de vins dans Cave &agrave; partir d&rsquo;un tableur, d&rsquo;un export Cave ou de CellarTracker. Le fichier est lu sur votre appareil et n&rsquo;est envoy&eacute; nulle part.</p>
+<p><a href="cave-example.csv" download>T&eacute;l&eacute;charger le fichier d&rsquo;exemple (cave-example.csv)</a>. Il compte dix lignes, trois casiers et une zone, et s&rsquo;importe sans erreur.</p>
+
+<h2>Ce que vous pouvez importer</h2>
+<ul>
+<li><strong>Votre propre tableau</strong>, fait dans Excel ou Numbers&nbsp;: une ligne pour chaque vin et chaque endroit o&ugrave; il est rang&eacute;.</li>
+<li><strong>Un export de Cave</strong> (R&eacute;glages &gt; Donn&eacute;es &gt; Exporter en CSV). Il se r&eacute;importe aux m&ecirc;mes emplacements&nbsp;: c&rsquo;est une sauvegarde que vous pouvez restaurer.</li>
+<li><strong>Une liste CellarTracker</strong> (le fichier CSV t&eacute;l&eacute;charg&eacute; depuis CellarTracker). Les emplacements ne sont pas import&eacute;s&nbsp;; voir &laquo;&nbsp;Ce qui n&rsquo;est pas import&eacute;&nbsp;&raquo; plus bas.</li>
+</ul>
+
+<h2>Pas &agrave; pas</h2>
+<h3>1. Pr&eacute;parer les colonnes</h3>
+<p>Mettez le nom des colonnes dans la premi&egrave;re ligne de votre tableau, une colonne par information (voir le tableau plus bas). Seules <strong>Vintage</strong> (mill&eacute;sime) et <strong>Producer</strong> (producteur) sont obligatoires. Chaque ligne suivante est un vin, avec son nombre de bouteilles dans <strong>Quantity</strong>. Pour ranger les bouteilles, ajoutez les colonnes <strong>Rack</strong> (casier) et <strong>Row</strong> (rang&eacute;e).</p>
+<h3>2. Enregistrer en CSV</h3>
+<p>Dans Excel&nbsp;: Fichier &gt; Enregistrer sous, puis choisissez <em>CSV UTF-8 (s&eacute;par&eacute; par des virgules)</em>. Dans Numbers&nbsp;: Fichier &gt; Exporter vers &gt; CSV. L&rsquo;UTF-8 garde les accents.</p>
+<div class="note">Cave reconna&icirc;t tout seul si les colonnes sont s&eacute;par&eacute;es par des virgules, des points-virgules ou des tabulations&nbsp;: le CSV qu&rsquo;Excel ou Numbers &eacute;crit en France ou ailleurs en Europe s&rsquo;ouvre donc sans probl&egrave;me. Un fichier UTF-8, avec ou sans BOM, est le meilleur choix&nbsp;; les fichiers texte Windows et Mac sont aussi lus.</div>
+<h3>3. Envoyer le fichier sur l&rsquo;iPhone</h3>
+<p>Utilisez AirDrop, iCloud Drive, une pi&egrave;ce jointe de mail ou tout autre moyen pour mettre le fichier dans l&rsquo;app Fichiers.</p>
+<h3>4. Lancer l&rsquo;importation</h3>
+<p>Dans Cave, ouvrez R&eacute;glages &gt; Donn&eacute;es &gt; <strong>Importer un fichier CSV</strong> et choisissez le fichier. (Sous ce bouton, <strong>Format de fichier</strong> explique les colonnes dans l&rsquo;app.)</p>
+<h3>5. Lire l&rsquo;aper&ccedil;u</h3>
+<p>Rien n&rsquo;est encore ajout&eacute;. L&rsquo;<strong>Aper&ccedil;u de l&rsquo;importation</strong> indique combien de vins sont nouveaux (+), combien s&rsquo;ajoutent &agrave; des vins que vous avez d&eacute;j&agrave; (=) et combien de lignes sont ignor&eacute;es (!), avec la raison dans <strong>Lignes ignor&eacute;es</strong>. <strong>&Agrave; v&eacute;rifier avant d&rsquo;importer</strong> liste ce qui m&eacute;rite votre attention&nbsp;: bouteilles qui resteraient sans emplacement, casiers modifi&eacute;s, doublons. La section <strong>Emplacements</strong> liste les casiers et zones qui seront cr&eacute;&eacute;s ou remplis.</p>
+<h3>6. Choisir ou cr&eacute;er la cave</h3>
+<p>La ligne <strong>Destination</strong> montre la cave qui re&ccedil;oit les bouteilles. Choisissez-en une, ou &laquo;&nbsp;Nouvelle cave&nbsp;&raquo; si vous n&rsquo;en avez pas. Si votre fichier a une colonne Cellar, chaque ligne va dans la cave qu&rsquo;elle nomme (cr&eacute;&eacute;e si elle n&rsquo;existe pas) et, si toutes les lignes en nomment une, la ligne indique &laquo;&nbsp;selon le fichier&nbsp;&raquo;. Les lignes sans valeur Cellar vont dans la cave choisie.</p>
+<h3>7. Importer, puis annuler si besoin</h3>
+<p>Touchez le bouton <strong>Importer</strong> (par exemple &laquo;&nbsp;Importer 46 bouteilles dans Maison&nbsp;&raquo;). Un message avec un bouton <strong>Annuler</strong> reste affich&eacute; 10 secondes (30 secondes au-del&agrave; de 50 bouteilles). Ensuite, R&eacute;glages &gt; Donn&eacute;es &gt; <strong>Annuler la derni&egrave;re importation</strong> reste disponible jusqu&rsquo;&agrave; votre prochaine importation ou jusqu&rsquo;&agrave; ce que vous quittiez Cave. L&rsquo;annulation retire les bouteilles import&eacute;es, les vins cr&eacute;&eacute;s par l&rsquo;importation, et les casiers, zones, rang&eacute;es et caves qu&rsquo;elle a cr&eacute;&eacute;s s&rsquo;ils sont encore vides. Les casiers qu&rsquo;elle avait agrandis retrouvent leur taille.</p>
+
+<h2>Les colonnes</h2>
+<p>Les noms de colonnes sont accept&eacute;s sans tenir compte des majuscules, des accents, des espaces, de <code>_</code> et de <code>-</code> (<code>Cuv&eacute;e</code> ou <code>drink_from</code> fonctionnent). Vous pouvez omettre les colonnes inutiles&nbsp;; les colonnes inconnues sont ignor&eacute;es. Les noms ci-dessous sont ceux &agrave; &eacute;crire dans le fichier.</p>
+<div class="scroll"><table>
+<thead><tr><th>Colonne</th><th>Aussi accept&eacute;</th><th>Exemple</th><th>Remarques</th></tr></thead>
+<tbody>
+<tr><td><strong>Vintage</strong> (obligatoire)</td><td></td><td><code>2019</code>, <code>NV</code></td><td>Une ann&eacute;e de 1800 &agrave; 2200. <code>NV</code> (ou <code>1001</code>) signifie sans mill&eacute;sime. Une valeur vide ou autre fait ignorer la ligne (&laquo;&nbsp;Mill&eacute;sime manquant&nbsp;&raquo;).</td></tr>
+<tr><td><strong>Producer</strong> (obligatoire)</td><td>ou une colonne <code>Wine</code></td><td><code>Domaine Exemple</code></td><td>Sans colonne Producer, le texte de <code>Wine</code> est utilis&eacute; (une ann&eacute;e ou NV au d&eacute;but est retir&eacute;e). Un producteur vide fait ignorer la ligne.</td></tr>
+<tr><td>Cuvee</td><td></td><td><code>Les Vieilles Vignes</code></td><td>Le nom du vin, &agrave; c&ocirc;t&eacute; du producteur.</td></tr>
+<tr><td>Colour</td><td>Color, Type</td><td><code>Red</code></td><td>&Eacute;crivez-la dans votre langue&nbsp;: Rouge, Blanc, Ros&eacute;, Effervescent (ou P&eacute;tillant, Mousseux, Champagne), Liquoreux (ou Moelleux, Doux), Mut&eacute; (ou Fortifi&eacute;, Vin doux naturel). Les mots anglais (Red, White...) et ceux de l&rsquo;allemand, de l&rsquo;espagnol, de l&rsquo;italien, du chinois, du japonais, du cor&eacute;en et de l&rsquo;arabe sont reconnus aussi. Les majuscules et les accents ne comptent pas. Un texte contenant Effervescent, Mut&eacute; ou Liquoreux l&rsquo;emporte&nbsp;: &laquo;&nbsp;Blanc liquoreux&nbsp;&raquo; est liquoreux. Une colonne Colour vide est lue comme rouge. <strong>Un mot que Cave ne conna&icirc;t pas est aussi lu comme rouge, et l&rsquo;aper&ccedil;u vous pr&eacute;vient</strong> (&laquo;&nbsp;sera en rouge&nbsp;: couleur non reconnue&nbsp;&raquo;)&nbsp;; vous pouvez changer la couleur ensuite.</td></tr>
+<tr><td>Appellation</td><td>SubRegion</td><td><code>Chablis</code></td><td>SubRegion sert quand Appellation est vide.</td></tr>
+<tr><td>Country, Region</td><td></td><td><code>France</code></td><td>Pays, r&eacute;gion.</td></tr>
+<tr><td>Designation</td><td>Classification</td><td><code>Premier Cru</code></td><td></td></tr>
+<tr><td>Varietal</td><td>Grapes</td><td><code>Pinot Noir</code></td><td>C&eacute;pages.</td></tr>
+<tr><td>Quantity</td><td></td><td><code>6</code></td><td>Nombre de bouteilles, de 1 &agrave; 1000. Vide = 1. Z&eacute;ro, n&eacute;gatif, texte ou plus de 1000 fait ignorer la ligne (&laquo;&nbsp;Aucune bouteille&nbsp;&raquo;).</td></tr>
+<tr><td>Size</td><td>volume_ml</td><td><code>750</code>, <code>75cl</code>, <code>1.5L</code>, <code>Magnum</code></td><td>Vide ou illisible = 750 ml. Un nombre seul &eacute;gal ou sup&eacute;rieur &agrave; 50 est en millilitres, un nombre plus petit en litres. Formats nomm&eacute;s&nbsp;: Piccolo, Half ou Demi, Magnum, Jeroboam, Double Magnum.</td></tr>
+<tr><td>Price</td><td>purchase_price</td><td><code>48.50</code></td><td>Un nombre, par bouteille. Les symboles mon&eacute;taires sont ignor&eacute;s. <code>1,250.50</code> se lit 1250,50 et <code>12,50</code> se lit 12,50.</td></tr>
+<tr><td>Store</td><td>purchase_place</td><td><code>Caviste</code></td><td>O&ugrave; vous l&rsquo;avez achet&eacute;.</td></tr>
+<tr><td>BeginConsume, EndConsume</td><td>drink_from, drink_until</td><td><code>2025</code>, <code>2032</code></td><td>Votre fen&ecirc;tre de d&eacute;gustation, en ann&eacute;es de 1900 &agrave; 2200. Les autres valeurs sont ignor&eacute;es. <code>keep_until</code> se lit de la m&ecirc;me fa&ccedil;on.</td></tr>
+<tr><td><strong>Cellar</strong></td><td>Home, Cave, Maison</td><td><code>Maison</code></td><td>Seulement si vous avez plusieurs maisons ou caves. Compar&eacute; par nom, sans tenir compte des majuscules ni des accents.</td></tr>
+<tr><td><strong>Rack</strong></td><td>Casier</td><td><code>Casier A</code></td><td>Le nom du casier, ou d&rsquo;une zone. Coup&eacute; apr&egrave;s 40 caract&egrave;res.</td></tr>
+<tr><td><strong>Row</strong></td><td>Rangee, Rang, Etagere, Shelf</td><td><code>3</code>, <code>Rang&eacute;e 3</code>, <code>R3</code>, <code>Haut</code></td><td>Un num&eacute;ro de 0 &agrave; 40, ou un nom. Voir &laquo;&nbsp;Comment fonctionnent les emplacements&nbsp;&raquo;.</td></tr>
+<tr><td><strong>Slot</strong></td><td>Position, Emplacement</td><td><code>4</code>, <code>Slot 4</code>, <code>S4</code>, <code>#4</code></td><td>Facultatif. Un num&eacute;ro de 1 &agrave; 40.</td></tr>
+</tbody></table></div>
+<p>Une ligne qui n&rsquo;a pas le m&ecirc;me nombre de cellules que l&rsquo;en-t&ecirc;te (guillemet non ferm&eacute;, virgule manquante) est ignor&eacute;e comme &laquo;&nbsp;Ligne mal form&eacute;e&nbsp;&raquo;. Une cellule qui contient le s&eacute;parateur doit &ecirc;tre entre guillemets, ce que font Excel et Numbers pour vous.</p>
+
+<h2>Comment fonctionnent les emplacements</h2>
+<ul>
+<li>Mettez l&rsquo;emplacement sur la m&ecirc;me ligne que le vin. Une ligne avec <strong>Quantity 6</strong>, <strong>Casier A</strong>, <strong>Row 2</strong> met 6 bouteilles dans la rang&eacute;e 2 du casier A.</li>
+<li>Les casiers, rang&eacute;es et caves nomm&eacute;s dans le fichier qui n&rsquo;existent pas encore sont cr&eacute;&eacute;s. Un casier qui existe d&eacute;j&agrave; dans la cave est r&eacute;utilis&eacute; (les noms sont compar&eacute;s sans tenir compte des majuscules ni des accents)&nbsp;; les rang&eacute;es manquantes sont ajout&eacute;es &agrave; la fin.</li>
+<li>Les <strong>num&eacute;ros de rang&eacute;e</strong> peuvent commencer &agrave; 0. Dans un nouveau casier, le fichier donne alors une rang&eacute;e 0, puis 1, etc. Sur un casier que vous avez d&eacute;j&agrave;, une rang&eacute;e 0 est ajout&eacute;e en t&ecirc;te.</li>
+<li><strong>M&ecirc;me taille pour toutes les rang&eacute;es.</strong> Dans un nouveau casier sans emplacements num&eacute;rot&eacute;s, chaque rang&eacute;e contient autant de bouteilles que la plus remplie du fichier, jusqu&rsquo;&agrave; 99 par rang&eacute;e. Les bouteilles qui ne tiennent pas sont import&eacute;es sans emplacement, et l&rsquo;aper&ccedil;u vous le dit. Une rang&eacute;e de plus de 40 bouteilles d&eacute;clenche un rappel de v&eacute;rifier la colonne Quantity.</li>
+<li><strong>Emplacements num&eacute;rot&eacute;s (Slot).</strong> Si le fichier donne un Slot, le casier a des emplacements&nbsp;: chaque rang&eacute;e en a autant que le plus grand num&eacute;ro de Slot ou la rang&eacute;e la plus remplie (40 au maximum). Une ligne de plusieurs bouteilles prend les emplacements suivants&nbsp;; si un emplacement est pris, le suivant libre est utilis&eacute;.</li>
+<li><strong>Zones.</strong> Un nom de casier sans Row (ni Slot) sur toutes ses lignes est une <strong>zone</strong>&nbsp;: un endroit en vrac, comme le sol ou des cartons, qui accepte n&rsquo;importe quel nombre de bouteilles.</li>
+<li>Une ligne avec un Rack mais sans Row, dans un casier &agrave; rang&eacute;es, est import&eacute;e <strong>sans emplacement</strong>. C&rsquo;est pareil pour un Row ou un Slot sans Rack, ou pour une valeur que Cave ne sait pas lire (une rang&eacute;e au-dessus de 40, par exemple). L&rsquo;aper&ccedil;u vous pr&eacute;vient avant tout ajout.</li>
+<li>Une zone existante ne peut pas recevoir de rang&eacute;es, et un casier existant ne peut pas recevoir de lignes sans rang&eacute;e. Les colonnes Slot sont ignor&eacute;es pour un casier existant sans emplacements num&eacute;rot&eacute;s.</li>
+</ul>
+
+<h3>Exemple pas &agrave; pas</h3>
+<p>Le fichier d&rsquo;exemple contient ces lignes d&rsquo;emplacement (autres colonnes omises)&nbsp;:</p>
+<div class="scroll"><table>
+<thead><tr><th>Vin</th><th>Quantity</th><th>Rack</th><th>Row</th><th>Slot</th></tr></thead>
+<tbody>
+<tr><td>Domaine Exemple, Les Vieilles Vignes 2019</td><td>6</td><td>Rack A</td><td>1</td><td></td></tr>
+<tr><td>Domaine Exemple, Chablis 2020</td><td>3</td><td>Rack A</td><td>2</td><td></td></tr>
+<tr><td>Chateau Modele 2015</td><td>12</td><td>Rack A</td><td>2</td><td></td></tr>
+<tr><td>Chateau Modele, Reserve 2018</td><td>6</td><td>Rack B</td><td>0</td><td></td></tr>
+<tr><td>Maison Specimen, Brut NV</td><td>2</td><td>Rack B</td><td>1</td><td></td></tr>
+<tr><td>Cave Demo, Grand Vin 2016 (Magnum)</td><td>1</td><td>Rack B</td><td>1</td><td></td></tr>
+<tr><td>Domaine Fictif, Riesling 2021</td><td>2</td><td>Rack C</td><td>1</td><td>1</td></tr>
+<tr><td>Domaine Fictif, Gewurztraminer 2021</td><td>1</td><td>Rack C</td><td>1</td><td>5</td></tr>
+<tr><td>Domaine Exemple, Rose de Saison 2022</td><td>12</td><td>Floor</td><td></td><td></td></tr>
+<tr><td>Domaine Exemple, Doux 2017 (375 ml)</td><td>1</td><td>Floor</td><td></td><td></td></tr>
+</tbody></table></div>
+<p>L&rsquo;aper&ccedil;u montre quatre emplacements&nbsp;:</p>
+<ul>
+<li><strong>Rack A</strong>&nbsp;: 2 rang&eacute;es, 21 bouteilles. La rang&eacute;e 2 est la plus remplie (3 + 12 = 15), donc les deux rang&eacute;es contiennent 15 bouteilles.</li>
+<li><strong>Rack B</strong>&nbsp;: 2 rang&eacute;es, 9 bouteilles. La rang&eacute;e 0 vient en premier (6 bouteilles), puis la rang&eacute;e 1 (3). Les deux contiennent 6 bouteilles.</li>
+<li><strong>Rack C</strong>&nbsp;: 1 rang&eacute;e de 5 emplacements, 3 bouteilles, aux emplacements 1, 2 et 5.</li>
+<li><strong>Floor</strong>&nbsp;: une zone de 13 bouteilles, car ses lignes n&rsquo;ont pas de rang&eacute;e.</li>
+</ul>
+
+<h2>Conseils et probl&egrave;mes courants</h2>
+<ul>
+<li><strong>&laquo;&nbsp;This does not look like a CellarTracker list export&nbsp;&raquo;</strong> (le fichier ne ressemble pas &agrave; une liste CellarTracker)&nbsp;: la premi&egrave;re ligne n&rsquo;a pas de colonne Vintage, ou pas de colonne Producer ni Wine.</li>
+<li><strong>Une couleur est lue comme rouge</strong>&nbsp;: &laquo;&nbsp;&Agrave; v&eacute;rifier avant d&rsquo;importer&nbsp;&raquo; liste les valeurs que Cave n&rsquo;a pas comprises. Utilisez l&rsquo;un des mots de couleur ci-dessus, puis importez de nouveau (ou changez la couleur dans Cave ensuite).</li>
+<li><strong>Les accents sont faux</strong>&nbsp;: enregistrez en CSV UTF-8. Cave lit aussi les fichiers texte Windows et Mac, mais l&rsquo;UTF-8 est le plus s&ucirc;r.</li>
+<li><strong>Une ligne est ignor&eacute;e</strong>&nbsp;: l&rsquo;aper&ccedil;u donne la raison dans Lignes ignor&eacute;es (Mill&eacute;sime manquant, Producteur vide, Aucune bouteille, Ligne mal form&eacute;e, En attente, D&eacute;j&agrave; import&eacute;, D&eacute;j&agrave; dans Cave, Plus dans la cave).</li>
+<li><strong>Bouteilles sans emplacement</strong>&nbsp;: regardez &laquo;&nbsp;&Agrave; v&eacute;rifier avant d&rsquo;importer&nbsp;&raquo;&nbsp;; le plus souvent il manque un Row pour un casier.</li>
+<li><strong>Importer deux fois le m&ecirc;me fichier</strong>&nbsp;: l&rsquo;aper&ccedil;u vous pr&eacute;vient quand un fichier de m&ecirc;me nom, m&ecirc;me taille et m&ecirc;me nombre de lignes a d&eacute;j&agrave; &eacute;t&eacute; import&eacute; sur cet appareil. Les bouteilles d&eacute;j&agrave; dans le casier ou la zone nomm&eacute; par le fichier sont ignor&eacute;es. L&rsquo;interrupteur <strong>Les ajouter quand m&ecirc;me (doublons)</strong> les importe malgr&eacute; tout. Un export Cave porte un identifiant par bouteille&nbsp;: celles qui sont d&eacute;j&agrave; dans Cave sont ignor&eacute;es. Une ligne CellarTracker d&eacute;j&agrave; import&eacute;e est ignor&eacute;e (&laquo;&nbsp;D&eacute;j&agrave; import&eacute;&nbsp;&raquo;).</li>
+<li><strong>M&ecirc;me vin qu&rsquo;un vin que vous avez d&eacute;j&agrave;</strong>&nbsp;: les vins sont reconnus par producteur, cuv&eacute;e et appellation (sans tenir compte des majuscules ni des accents), et les bouteilles s&rsquo;ajoutent au vin existant.</li>
+<li><strong>Limites</strong>&nbsp;: un fichier de 5 Mo et 5000 lignes au maximum, au plus 1000 bouteilles sur une ligne. Un fichier plus gros doit &ecirc;tre coup&eacute; en plusieurs.</li>
+</ul>
+
+<h2>Ce qui n&rsquo;est pas import&eacute;</h2>
+<ul>
+<li><strong>Location</strong> et <strong>Bin</strong> de CellarTracker&nbsp;: ce sont des textes libres. L&rsquo;aper&ccedil;u le dit&nbsp;; rangez ensuite les bouteilles dans vos casiers. Ajoutez des colonnes Rack et Row &agrave; votre fichier si vous voulez des emplacements.</li>
+<li>Le <strong>Journal</strong> de CellarTracker (notes et d&eacute;gustations), ainsi que les colonnes de notes et de commentaires de n&rsquo;importe quel fichier.</li>
+<li>Les lignes CellarTracker marqu&eacute;es <strong>Pending</strong> (encore en commande).</li>
+<li>Depuis un export Cave&nbsp;: les bouteilles bues ou donn&eacute;es ne sont pas restaur&eacute;es.</li>
+<li>Les photos d&rsquo;&eacute;tiquettes.</li>
+</ul>
+
+<h2>Confidentialit&eacute;</h2>
+<p>Le fichier est lu sur votre appareil. Cave n&rsquo;a pas de serveur&nbsp;: le fichier et votre liste ne sont envoy&eacute;s ni &agrave; nous ni &agrave; personne. Si vous utilisez iCloud, votre cave se synchronise ensuite par votre propre compte, comme le reste de vos donn&eacute;es. Voir la <a href="privacy.html">politique de confidentialit&eacute;</a> (en anglais).</p>
+
+<p class="meta">Des questions&nbsp;? Voir <a href="support.html">Support</a> (en anglais).</p>
+</main>
+<footer>
+<p>Copyright 2026 Olivier Barlier. This site sets no cookies and loads no scripts.</p>
+</footer>
+</body>
+</html>

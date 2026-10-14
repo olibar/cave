@@ -1,0 +1,11 @@
+Producer,Cuvee,Vintage,Colour,Appellation,Country,Quantity,Size,Price,Rack,Row,Slot
+Domaine Exemple,Les Vieilles Vignes,2019,Red,Gevrey-Chambertin,France,6,750,48.50,Rack A,1,
+Domaine Exemple,,2020,White,Chablis,France,3,750,22,Rack A,2,
+Chateau Modele,,2015,Red,Pauillac,France,12,750,65,Rack A,2,
+Chateau Modele,Reserve,2018,Red,Saint-Emilion Grand Cru,France,6,750,40,Rack B,0,
+Maison Specimen,Brut,NV,Sparkling,Champagne,France,2,750,38,Rack B,1,
+Cave Demo,Grand Vin,2016,Red,Margaux,France,1,Magnum,150,Rack B,1,
+Domaine Fictif,Riesling,2021,White,Alsace Grand Cru,France,2,750,25,Rack C,1,1
+Domaine Fictif,Gewurztraminer,2021,White,Alsace Grand Cru,France,1,750,27,Rack C,1,5
+Domaine Exemple,Rose de Saison,2022,Rose,Cotes de Provence,France,12,750,12,Floor,,
+Domaine Exemple,Doux,2017,Sweet,Sauternes,France,1,375,30,Floor,,

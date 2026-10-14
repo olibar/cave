@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="How to import your wine list into the Cave app from a spreadsheet, a Cave export or CellarTracker.">
+<title>Cave import guide</title>
+<style>
+:root{--bg:#fbf8f5;--fg:#1f1a17;--muted:#5c534d;--accent:#7a1f2b;--line:#e4dcd5;--card:#ffffff}
+@media (prefers-color-scheme:dark){:root{--bg:#161312;--fg:#efe9e4;--muted:#b5aba3;--accent:#e58b96;--line:#3a3330;--card:#1f1b19}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skip{position:absolute;left:-999px;top:0}
+.skip:focus{left:16px;top:8px;background:var(--card);padding:8px 12px}
+header,main,footer{max-width:42rem;margin:0 auto;padding:0 16px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;padding-top:24px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+header .name{font-weight:700;font-size:1.25rem;color:var(--fg);text-decoration:none}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:16px;flex-wrap:wrap}
+nav a[aria-current=page]{font-weight:600;color:var(--fg)}
+h1{font-size:1.9rem;line-height:1.2;margin:28px 0 8px}
+h2{font-size:1.25rem;margin:28px 0 6px}
+h3{font-size:1.05rem;margin:20px 0 4px}
+p,li{max-width:40rem}
+.lead{color:var(--muted);font-size:1.1rem}
+.meta{color:var(--muted);font-size:.95rem}
+ul.features{padding-left:1.2rem}
+footer{margin-top:40px;padding-top:16px;padding-bottom:32px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:.95rem}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--card)}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9rem}
+pre{background:var(--card);border:1px solid var(--line);padding:12px;overflow-x:auto;border-radius:6px}
+ol li,ul li{margin:4px 0}
+.note{border-left:4px solid var(--accent);background:var(--card);padding:8px 14px;margin:16px 0}
+.lang{font-size:.95rem}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+<a class="name" href="index.html">Cave</a>
+<nav aria-label="Site"><ul><li><a href="index.html">Home</a></li><li><a href="support.html">Support</a></li><li><a href="import.html" aria-current="page">Import guide</a></li><li><a href="privacy.html">Privacy</a></li></ul></nav>
+</header>
+<main id="main">
+<p class="lang"><a href="import-fr.html" hreflang="fr" lang="fr">Lire ce guide en fran&ccedil;ais</a></p>
+<h1>Import guide</h1>
+<p class="lead">Bring your wine list into Cave from a spreadsheet, from a Cave export, or from CellarTracker. The file is read on your device and is never sent anywhere.</p>
+<p><a href="cave-example.csv" download>Download the example file (cave-example.csv)</a>. It has ten lines, three racks and one area, and imports cleanly.</p>
+
+<h2>What you can import</h2>
+<ul>
+<li><strong>A sheet of your own</strong>, made in Excel or Numbers: one line for each wine and each place it is stored in.</li>
+<li><strong>A Cave export</strong> (Settings &gt; Data &gt; Export CSV). It imports back into the same places, which makes it a backup you can restore.</li>
+<li><strong>A CellarTracker list</strong> (the CSV you download from CellarTracker). Places are not imported; see &ldquo;What is not imported&rdquo; below.</li>
+</ul>
+
+<h2>Step by step</h2>
+<h3>1. Prepare the columns</h3>
+<p>Put the column names in the first row of your sheet, one column for each piece of information (see the table below). Only <strong>Vintage</strong> and <strong>Producer</strong> are required. Each following row is one wine, with its <strong>Quantity</strong> of bottles. To place bottles, add <strong>Rack</strong> and <strong>Row</strong> columns.</p>
+<h3>2. Save as CSV</h3>
+<p>In Excel: File &gt; Save As, then choose <em>CSV UTF-8 (Comma delimited)</em>. In Numbers: File &gt; Export To &gt; CSV. UTF-8 keeps accents intact.</p>
+<div class="note">Cave works out by itself whether the columns are separated by commas, semicolons or tabs, so the CSV that Excel or Numbers writes in a French or other European region opens fine. A UTF-8 file, with or without a BOM, is the best choice; Windows and Mac text files are read too.</div>
+<h3>3. Send the file to your iPhone</h3>
+<p>Use AirDrop, iCloud Drive, a mail attachment or any other way to put the file in the Files app.</p>
+<h3>4. Start the import</h3>
+<p>In Cave, open Settings &gt; Data &gt; <strong>Import CSV</strong> and choose the file. (Under the button, <strong>File format</strong> explains the columns inside the app.)</p>
+<h3>5. Read the preview</h3>
+<p>Nothing is added yet. The <strong>Import preview</strong> shows how many wines are new (+), how many add bottles to wines you already have (=), and how many lines are skipped (!), each with its reason in <strong>Skipped rows</strong>. <strong>Check before importing</strong> lists what needs your attention: bottles that would be left without a place, racks that change, duplicates. A <strong>Places</strong> section lists the racks and areas that will be created or filled.</p>
+<h3>6. Choose or create the cellar</h3>
+<p>The <strong>Into</strong> row shows the cellar that receives the bottles. Pick one, or &ldquo;New cellar&rdquo; if you have none. If your file has a Cellar column, each line goes to the cellar it names (created if it does not exist) and, if every line names one, the row says &ldquo;from the file&rdquo;. Lines without a Cellar value go to the cellar you picked.</p>
+<h3>7. Import, then undo if needed</h3>
+<p>Tap the <strong>Import</strong> button (for example &ldquo;Import 46 bottles into Maison&rdquo;). A message with an <strong>Undo</strong> button stays for 10 seconds (30 seconds for more than 50 bottles). After that, Settings &gt; Data &gt; <strong>Undo last import</strong> stays available until your next import or until you quit Cave. Undo removes the imported bottles, the wines that import created, and the racks, areas, rows and cellars it created when they are still empty. Racks it had enlarged go back to their size.</p>
+
+<h2>The columns</h2>
+<p>Column names are not case sensitive, and accents, spaces, <code>_</code> and <code>-</code> do not matter (<code>Cuv&eacute;e</code> or <code>drink_from</code> both work). Columns you do not need can be left out, and unknown columns are ignored.</p>
+<div class="scroll"><table>
+<thead><tr><th>Column</th><th>Also accepted</th><th>Example</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong>Vintage</strong> (required)</td><td></td><td><code>2019</code>, <code>NV</code></td><td>A year from 1800 to 2200. <code>NV</code> (or <code>1001</code>) means non-vintage. An empty or other value skips the line (&ldquo;Vintage missing&rdquo;).</td></tr>
+<tr><td><strong>Producer</strong> (required)</td><td>or a <code>Wine</code> column</td><td><code>Domaine Exemple</code></td><td>If there is no Producer column, the <code>Wine</code> text is used (a leading year or NV is removed). An empty producer skips the line.</td></tr>
+<tr><td>Cuvee</td><td></td><td><code>Les Vieilles Vignes</code></td><td>The wine&rsquo;s name next to the producer.</td></tr>
+<tr><td>Colour</td><td>Color, Type</td><td><code>Red</code></td><td>Write it in your own language: Red, White, Rose, Sparkling, Sweet (or Dessert), Fortified, or the same words in French (Rouge, Blanc, Ros&eacute;, Effervescent, Doux, Mut&eacute;...), German, Spanish, Italian, Chinese, Japanese, Korean or Arabic. Case and accents do not matter. A text containing Sparkling, Fortified or Sweet wins, so &ldquo;White - Sweet&rdquo; is sweet. An empty Colour is read as red. <strong>A word Cave does not know is also read as red, and the preview tells you</strong> (&ldquo;will be red: colour not understood&rdquo;); you can change the colour afterwards.</td></tr>
+<tr><td>Appellation</td><td>SubRegion</td><td><code>Chablis</code></td><td>SubRegion is used when Appellation is empty.</td></tr>
+<tr><td>Country, Region</td><td></td><td><code>France</code></td><td></td></tr>
+<tr><td>Designation</td><td>Classification</td><td><code>Premier Cru</code></td><td></td></tr>
+<tr><td>Varietal</td><td>Grapes</td><td><code>Pinot Noir</code></td><td></td></tr>
+<tr><td>Quantity</td><td></td><td><code>6</code></td><td>Number of bottles, 1 to 1000. Empty means 1. Zero, a negative number, text or more than 1000 skips the line (&ldquo;No bottles&rdquo;).</td></tr>
+<tr><td>Size</td><td>volume_ml</td><td><code>750</code>, <code>75cl</code>, <code>1.5L</code>, <code>Magnum</code></td><td>Empty or unreadable means 750 ml. A plain number of 50 or more is millilitres, a smaller one is litres. Named sizes: Piccolo, Half or Demi, Magnum, Jeroboam, Double Magnum.</td></tr>
+<tr><td>Price</td><td>purchase_price</td><td><code>48.50</code></td><td>A number per bottle. Currency signs are ignored. <code>1,250.50</code> reads as 1250.50 and <code>12,50</code> as 12.50.</td></tr>
+<tr><td>Store</td><td>purchase_place</td><td><code>Wine shop</code></td><td>Where you bought it.</td></tr>
+<tr><td>BeginConsume, EndConsume</td><td>drink_from, drink_until</td><td><code>2025</code>, <code>2032</code></td><td>Your drink window, as years from 1900 to 2200. Other values are ignored. <code>keep_until</code> is read the same way.</td></tr>
+<tr><td><strong>Cellar</strong></td><td>Home, Cave, Maison</td><td><code>Maison</code></td><td>Only if you have several homes or cellars. Matched by name without case or accents.</td></tr>
+<tr><td><strong>Rack</strong></td><td>Casier</td><td><code>Rack A</code></td><td>The name of the rack, or of an area. Cut after 40 characters.</td></tr>
+<tr><td><strong>Row</strong></td><td>Shelf, Rangee, Rang, Etagere</td><td><code>3</code>, <code>Row 3</code>, <code>R3</code>, <code>Top</code></td><td>A number from 0 to 40, or a name. See &ldquo;How places work&rdquo;.</td></tr>
+<tr><td><strong>Slot</strong></td><td>Position, Emplacement</td><td><code>4</code>, <code>Slot 4</code>, <code>S4</code>, <code>#4</code></td><td>Optional. A number from 1 to 40.</td></tr>
+</tbody></table></div>
+<p>A line that does not have the same number of cells as the header (for example an unclosed quote or a missing comma) is skipped as &ldquo;Malformed row&rdquo;. Put a cell that contains the separator between double quotes, which Excel and Numbers do for you.</p>
+
+<h2>How places work</h2>
+<ul>
+<li>Put the place on the same line as the wine. A line with <strong>Quantity 6</strong>, <strong>Rack A</strong>, <strong>Row 2</strong> puts 6 bottles in row 2 of Rack A.</li>
+<li>Racks, rows and cellars named in the file that do not exist yet are created. A rack that already exists in the cellar is reused (names are compared without case or accents); missing rows are added at the end.</li>
+<li><strong>Row numbers</strong> may start at 0. In a new rack the file then gets a row 0, then row 1, and so on. On a rack you already have, a row 0 is added in front.</li>
+<li><strong>Same size for all rows.</strong> In a new rack without slots, every row holds as many bottles as the fullest row of the file, up to 99 per row. Bottles that do not fit are imported without a place, and the preview tells you. A row over 40 bottles gets a reminder to check the Quantity column.</li>
+<li><strong>Slots.</strong> If the file gives a Slot, the rack has slots: each row gets as many slots as the highest slot or the fullest row (at most 40). A line of several bottles takes the next slots in turn; if a slot is taken, the next free one is used.</li>
+<li><strong>Areas.</strong> A rack name with no Row (and no Slot) on any of its lines is an <strong>area</strong>: a loose place such as a floor or boxes, holding any number of bottles.</li>
+<li>A line with a Rack but no Row, in a rack that has rows, is imported <strong>without a place</strong>. The same applies to a Row or Slot with no Rack, or to a value Cave cannot read (a row above 40, for example). The preview warns you before anything is added.</li>
+<li>An existing area cannot receive rows, and an existing rack cannot receive lines without rows. Slot columns are ignored for an existing rack that has no slots.</li>
+</ul>
+
+<h3>Worked example</h3>
+<p>The example file contains these place lines (other columns left out):</p>
+<div class="scroll"><table>
+<thead><tr><th>Wine</th><th>Quantity</th><th>Rack</th><th>Row</th><th>Slot</th></tr></thead>
+<tbody>
+<tr><td>Domaine Exemple, Les Vieilles Vignes 2019</td><td>6</td><td>Rack A</td><td>1</td><td></td></tr>
+<tr><td>Domaine Exemple, Chablis 2020</td><td>3</td><td>Rack A</td><td>2</td><td></td></tr>
+<tr><td>Chateau Modele 2015</td><td>12</td><td>Rack A</td><td>2</td><td></td></tr>
+<tr><td>Chateau Modele, Reserve 2018</td><td>6</td><td>Rack B</td><td>0</td><td></td></tr>
+<tr><td>Maison Specimen, Brut NV</td><td>2</td><td>Rack B</td><td>1</td><td></td></tr>
+<tr><td>Cave Demo, Grand Vin 2016 (Magnum)</td><td>1</td><td>Rack B</td><td>1</td><td></td></tr>
+<tr><td>Domaine Fictif, Riesling 2021</td><td>2</td><td>Rack C</td><td>1</td><td>1</td></tr>
+<tr><td>Domaine Fictif, Gewurztraminer 2021</td><td>1</td><td>Rack C</td><td>1</td><td>5</td></tr>
+<tr><td>Domaine Exemple, Rose de Saison 2022</td><td>12</td><td>Floor</td><td></td><td></td></tr>
+<tr><td>Domaine Exemple, Doux 2017 (375 ml)</td><td>1</td><td>Floor</td><td></td><td></td></tr>
+</tbody></table></div>
+<p>The preview shows four places:</p>
+<ul>
+<li><strong>Rack A</strong>: 2 rows, 21 bottles. Row 2 is the fullest (3 + 12 = 15), so both rows hold 15.</li>
+<li><strong>Rack B</strong>: 2 rows, 9 bottles. Row 0 comes first (6 bottles), then row 1 (3). Both rows hold 6.</li>
+<li><strong>Rack C</strong>: 1 row of 5 slots, 3 bottles, in slots 1, 2 and 5.</li>
+<li><strong>Floor</strong>: an area with 13 bottles, because its lines have no row.</li>
+</ul>
+
+<h2>Tips and common problems</h2>
+<ul>
+<li><strong>&ldquo;This does not look like a CellarTracker list export&rdquo;</strong>: the first row has no Vintage column, or no Producer or Wine column.</li>
+<li><strong>A colour is read as red</strong>: Check before importing lists the values Cave did not understand. Use one of the colour words above, then import again (or change the colour in Cave afterwards).</li>
+<li><strong>Accents look wrong</strong>: save as CSV UTF-8. Cave also reads Windows and Mac text files, but UTF-8 is the safest.</li>
+<li><strong>A line is skipped</strong>: the preview names the reason under Skipped rows (Vintage missing, Empty producer, No bottles, Malformed row, Pending, Already imported, Already in Cave, Not in the cellar).</li>
+<li><strong>Bottles left without a place</strong>: look at Check before importing; usually a Row is missing for a rack.</li>
+<li><strong>Importing the same file twice</strong>: the preview tells you when you already imported a file with the same name, size and number of lines on this device. Bottles that are already in the rack or area the file names are skipped. The switch <strong>Add them anyway (duplicates)</strong> imports them regardless. A Cave export carries a bottle identifier, so bottles already in Cave are skipped. A CellarTracker line already imported is skipped as &ldquo;Already imported&rdquo;.</li>
+<li><strong>Same wine as one you already have</strong>: wines are matched by producer, cuvee and appellation (without case or accents), and the bottles are added to the existing wine.</li>
+<li><strong>Limits</strong>: a file of at most 5 MB and 5000 lines, at most 1000 bottles on one line. Bigger files must be split.</li>
+</ul>
+
+<h2>What is not imported</h2>
+<ul>
+<li>CellarTracker <strong>Location</strong> and <strong>Bin</strong>: they are free text. The preview says so; place the bottles in your racks afterwards. Add Rack and Row columns to your file if you want places.</li>
+<li>CellarTracker <strong>Journal</strong> (notes and tastings), and ratings and notes columns of any file.</li>
+<li>CellarTracker lines marked <strong>Pending</strong> (still on order).</li>
+<li>From a Cave export: bottles that are drunk or given away are not restored.</li>
+<li>Label photos.</li>
+</ul>
+
+<h2>Privacy</h2>
+<p>The file is read on your device. Cave has no server, so the file and your list are not sent to us or to anyone else. If you use iCloud, your cellar then syncs through your own account like the rest of your data. See the <a href="privacy.html">privacy policy</a>.</p>
+
+<p class="meta">Questions: see <a href="support.html">Support</a>.</p>
+</main>
+<footer>
+<p>Copyright 2026 Olivier Barlier. This site sets no cookies and loads no scripts.</p>
+</footer>
+</body>
+</html>
